@@ -20,6 +20,20 @@ if final >=60 and toplamnot >=55 :
 else:
     print("kaldiniz")
 
+#girilen sayinin mutlak degerini bulan program
+sayi=int(input("sayi giriniz:"))
+if sayi<0:
+    print("sayinin mutlak degeri:",sayi*-1)
+elif sayi>0:
+    print("sayinin mutlak degeri:",sayi)
+else:
+    print("sayiniz 0")
+
+# #girilen sayının mutlak degerini bulan program (abs)
+sayi=int(input("sayi giriniz:"))
+mutlak=abs(sayi)
+print("sayinin mutlak degeri:",mutlak)
+
 #Kullanıcının girdiği üç sayıdan büyük olanını yazdıran program?   
 sayi1=int(input("sayi1 giriniz :"))
 sayi2=int(input("sayi2 giriniz :"))
@@ -54,6 +68,23 @@ elif secim==3:
     print(num1*num2)
 elif secim==4:
     print(num1/num2)
+
+
+# #Fahrenheit olarak girilen sicakligi celciusa ceviren ve 
+# 0<a<15 soguk,15<a<25 ilik,a>=25 sicak olarak degerlerine bulan program (Fahrenheit alt degeri -459.67 olacak sekilde bulunuz)
+
+F=int(input("derece giriniz:"))
+if F<= -459.67:
+    print("fahrenheit alt sinirindan kucuk deger girdiniz")
+C=(F-32)/1.8000
+print("girdiginz fahrenheit =",C)
+
+if C>=0 and C<=15:
+    print("hava soguk")
+elif C<15 and C>25:
+    print("hava ilik")
+elif C>=25 :
+    print("hava sicak")
 
 
 #Klavyeden girilen sayıya kadar olan sayılardan tek sayıların toplamını ve
@@ -91,6 +122,16 @@ for i in range(1,Deger+1):
     if Deger%i==0:
         l.append(i)
 print(l)
+
+#girilen meitndeki bosluklari continue ifadesiyle silen kod.Karakterler yan yana yazilacak
+a=input("metin giriniz:")
+sayac=" "
+for i in a:
+    if i == " ":
+        continue 
+    sayac+=i
+print(sayac)   
+
 
 #Girilen bir sayının asal çarpanlarını bulan program?
 num3 = int(input("Sayı giriniz:"))
@@ -132,6 +173,21 @@ list.append(birler)
 print(f"yüzler basamağı {yüzler}")
 print(f"onlar basamağı {onlar}")
 print(f"birler basamağı {birler}")
+
+#girilen sayinin basamak sayisini ve rakamlari toplamini yazdiriniz
+num=int(input("lutfen sayi giriniz:"))
+digit_num=0  #basamak sayisi
+digit_total=0 #rakamlari toplami
+while num>0:
+    digit=num%10 #modunu al
+    digit_num+=1 #bas sayisini 1 artır
+    digit_total+=digit #rakamları toplamını modu kadar artır
+    print("basamak:",digit) #basamaklari sirayla yazdir
+    num=((num-digit)//10) #girilen sayidan modu cikar or 156-6=150 //10 bolum 15 yeni sayi 15... sonraki sefer 15%10=mod 5 en son 15-5=10//10=1
+    
+print("basamak sayisi:",digit_num)
+print("rakamlari toplami:",digit_total)
+
 
 #N’e kadar tek sayıları yazdıran program?
 N = int(input("Bir N degeri giriniz:"))
@@ -233,6 +289,25 @@ if a + b > c and a + c > b and b + c > a:
 
 else:
     print("Bu kenar uzunluklariyla bir ucgen cizilemez.")
+
+#tc 1.3.5.7.9 hanelerinin toplamının 7 katından,2.4.6.8 hanelerin toplamından cıkarıldıgından elde edilen sonucun %10 u bize 10. haneyi verir
+#1.2.3.4.5.6.7.8.9.10 hanelerin toplamından elde edilen sonucun 10 bolumunden kalan  bize 11. haneyi verir
+tc=str(input("tc giriniz:"))
+list=[]
+say0=0
+say1=0
+say2=0
+for i in tc:
+    list.append(i)
+print(list)
+for i in range(0,10,2):
+    say0=say0+int(list[i])
+for j in range(1,9,2):
+    say1=say1+int(list[j])
+for i in range(10):
+    say2=say2+int(list[i])
+print("10.hane:",((say0*7)-say1)%10)
+print("11.hane:",say2%10)
 
 
         ##########SORULARIN FONKSIYONLA COZUMLERI#############
