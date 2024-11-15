@@ -101,18 +101,6 @@ for z in range(1,sayii+1):
 print("Ciftlerin toplami:", sum(k))
 print("Teklerin toplami:", sum(t))
 
-#fonskiyon
-def TekCiftToplam(deger1):
-    k1=[]
-    t1=[]
-    for i in range(1,deger1+1):
-        if i %2==0:
-         k1.append(i)
-    for z in range(1,deger1+1):
-        if z %2!=0:
-            t1.append(z)
-    return sum(k1) , sum(t1)
-print(TekCiftToplam(9))
 
 
 #Girilen sayının tam bölenlerini bulan program?
@@ -309,6 +297,158 @@ for i in range(10):
 print("10.hane:",((say0*7)-say1)%10)
 print("11.hane:",say2%10)
 
+# Sayı tahmin oyunu
+import random
+a=random.randint(1,100)
+hak=5
+while hak>0:
+    sayi=int(input("tahmin giriniz:"))
+    if sayi!=a:
+        hak-=1
+        print(f"yanlis kalan hak: {hak}")
+    else:
+        print("tebrikler bildiniz")
+        break
+if hak == 0:
+    print(f"hakkiniz bitti sayi : {a}idi ")
+
+
+
+#Girilen sayının Pronic (ardışık iki sayının çarpımına eşit) olup olmadığını bulunuz
+
+sayi=int(input("sayi giriniz:"))
+sayac=0
+for i in range(1,sayi+1):
+    if i*(i+1)==sayi:
+        sayac=1
+        break
+if sayac==1:
+    print("sayi pronic")
+else:
+    print("sayi pronic degil")
+
+
+
+# N’e kadar ki Harshad (sayının kendisi rakamları toplamına bölünüyor) olanları listele? 
+
+list = []
+N = int(input("N degerini giriniz: "))
+for i in range(1, N + 1):
+    basamaktoplam = 0
+    a= i
+    while a > 0:
+        digit = a % 10
+        basamaktoplam += digit
+        a =(a-digit) //10 
+    if i % basamaktoplam == 0:
+        list.append(i)
+print(list)
+
+
+    
+#Girilen sayının Jumbled (komşu rakamlar arasındaki fark maksimum 1) olup olmadığını bulunuz? 
+sayi=int(input("sayi giriniz:")) 
+sayac=0
+a=sayi%10 
+sayi=(sayi-a)//10 
+while sayi>0:
+    sonhane=sayi%10 
+    if abs(sonhane-a)>1:
+        sayac=1
+        break
+    a=sonhane
+    sayi=(sayi-sonhane)//10
+if sayac==1:
+    print("sayi jumbled")
+else:
+    print("sayi jumbled degil")
+
+#Girilen cümledeki sesli ve sessiz harf sayısını bulun?
+sesli=["a","e","ı","i","o","ö","u","ü"]
+sessizSayi=0
+sesliSayi=0
+cumle=input("cumle giriniz")
+for i in cumle.lower():
+        if i in sesli:
+            sesliSayi+=1
+        else:
+            sessizSayi+=1
+print(f"sesli adedi {sesliSayi} , sessiz adedi {sessizSayi}")
+
+
+
+#Girilen cümledeki harflerin adetlerini ekrana yazın?
+yazi = input("Yazi giriniz: ")
+hs = 0 
+for chr in yazi:
+    if (ord(chr) >= 65 and ord(chr) <= 90) or (ord(chr) >= 97 and ord(chr) <= 122):
+        hs += 1
+print(hs)
+    
+
+# Girilen sayının basamak değerlerinde
+# k rakamı olmayanları listeleyen program?
+a=int(input("a:"))
+k=int(input("k:"))
+while a>0:
+    son=a%10
+    if son!=k:
+        print(son)
+    a=a//10
+
+# TC kimlik noyu 
+# doğru girmeye zorlayınız? 
+# (11 karakter ve tamamı sayı
+tc=str(input("tc"))
+rakam=[0,1,2,3,4,5,6,7,8,9]
+if len(tc)!=11:
+    print("11 haneli tc giriniz:")
+else:
+    sayac=False
+    for i in tc:
+        if i in rakam:
+            sayac=True
+            break
+    if sayac==False:
+        print("Tc sorunsuz")
+    else:
+        print("Tc sorunlu")
+
+#Girilen sayinin basamaklarinin  carpimini bulan program
+sayi = int(input("Bir sayi giriniz: "))
+carpim = 1
+while sayi > 0:
+    digit = sayi % 10  
+    print("Basamak:", digit)
+    carpim *= digit  
+    sayi = sayi // 10 
+print("Basamaklarin carpimi:", carpim)
+
+# kullanıcıdan alınan sayılar (q harfine basana kadar almaya devam edecek)
+# bir listeye alın ve input alma işlemi bittiginde 
+# istedeki ekenanların aritmetik ort hesaplayan program
+ 
+list=[]
+while True:
+    sayi=input("sayi giriniz:")
+    
+    if sayi=="q":
+        break
+    list.append(int(sayi))
+ortalama=sum(list)/len(list)
+print(ortalama)
+
+        
+#kullanıcıdan alınan cumle icinde 
+#belirli kelime var mı yok mu kontrolu yapan kod 
+#aranacak kelime de kullanıcıdan alınacak
+cumle=str(input("cumle giriniz:"))
+belirli=str(input("kelime giriniz:"))
+if belirli in cumle:
+    print(f"kelimeniz:{belirli} cumleniz {cumle} icerisinde var")
+else:
+    print(f"kelimeniz:{belirli} cumle icinde yok")
+
 
         ##########SORULARIN FONKSIYONLA COZUMLERI#############
 
@@ -375,6 +515,20 @@ def islemRobotu(num,num1,num2):
     elif secim==4:
         return (num1/num2)
 print(islemRobotu(1,19,1))
+
+#fonskiyon
+def TekCiftToplam(deger1):
+    k1=[]
+    t1=[]
+    for i in range(1,deger1+1):
+        if i %2==0:
+         k1.append(i)
+    for z in range(1,deger1+1):
+        if z %2!=0:
+            t1.append(z)
+    return sum(k1) , sum(t1)
+print(TekCiftToplam(9))
+
 
 #1 den 100 e kadar olan sayılardan aynı anda 3 ve 5 e tam bölünen sayıları alt alta yazdıran python kodunu yazınız.
 #fonksiyon
